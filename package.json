@@ -1,0 +1,24 @@
+{
+  "name": "node-commander",
+  "version": "0.0.0",
+  "description": "build node.js command-line interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zlargon/node-commander.git"
+  },
+  "author": "zlargon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zlargon/node-commander/issues"
+  },
+  "homepage": "https://github.com/zlargon/node-commander#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^1.10.3",
+    "mocha": "^2.4.5"
+  }
+}
