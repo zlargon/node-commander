@@ -4,7 +4,9 @@
   "description": "build node.js command-line interface",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "lint": "eslint .",
+    "start": "npm run lint; npm test"
   },
   "repository": {
     "type": "git",
