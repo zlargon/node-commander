@@ -37,11 +37,50 @@ module.exports = class Commander {
     }
 
     const name = path.basename(_args[1]);
-    const args = _args.slice(2);
+    let args = [];
+    let opt = {};
 
-    return {
-      name,
-      args
-    };
+    for (let i = 2; i < _args.length; i++) {
+      const arg = _args[i];
+      if (this._option.hasOwnProperty(arg) === false) {
+        args.push(arg);
+        continue;
+      }
+
+      const o = this._option[arg];
+      if (opt.hasOwnProperty(o.name)) {
+        throw new TypeError(`flag '${o.short}', '${o.long}' is repeated`);
+      }
+
+      /* * * Parameter * * */
+      let param;
+      if (o.boolType) {
+        param = true;
+      } else {
+
+        /* * * Need Parameter * * */
+        i += 1;  // next index
+
+        if (i === _args.length) {
+          throw new TypeError(`'${arg}' need the parameter`);
+        }
+
+        const nextArg = _args[i];
+        if (this._option.hasOwnProperty(nextArg)) {
+          throw new TypeError(`'${arg}' need the parameter`);
+        }
+
+        param = nextArg;
+      }
+
+      opt[o.name] = param;
+
+      /* * * Action * * */
+      if (typeof o.action === 'function') {
+        o.action(param);
+      }
+    }
+
+    return { name, args, opt };
   }
 };
