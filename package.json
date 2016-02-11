@@ -2,7 +2,7 @@
   "name": "node-commander",
   "version": "0.0.0",
   "description": "build node.js command-line interface",
-  "main": "index.js",
+  "main": "src/Commander.js",
   "scripts": {
     "test": "mocha",
     "lint": "eslint .",
