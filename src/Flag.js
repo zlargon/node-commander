@@ -1,5 +1,13 @@
 'use strict';
 module.exports = {
+  isShort (flag) {
+    return /^-[-a-zA-Z]$/g.test(flag);
+  },
+
+  isLong (flag) {
+    return flag.length >= 4 && /^-(-[a-z_]+)+$/g.test(flag);
+  },
+
   parse (_flags) {
     if (typeof _flags !== 'string' || _flags.length < 2) {
       throw new TypeError('flags should be a string');
@@ -27,11 +35,12 @@ module.exports = {
     };
 
     // flag = ['-f', '--foo']
+    const self = this;
     flags.split(',')
       .map(s => s.trim())
       .forEach(function (opt) {
         // -f, -F, --
-        if (/^-[-|a-z|A-Z]$/g.test(opt)) {
+        if (self.isShort(opt)) {
           if (option.short !== null) {
             throw new TypeError(`cannot have another short flags '${_flags}'`);
           }
@@ -41,7 +50,7 @@ module.exports = {
         }
 
         // --foo, --no-foo, --hello-world
-        if (opt.length >= 4 && /^-(-[a-z]+)+$/g.test(opt)) {
+        if (self.isLong(opt)) {
           if (option.long !== null) {
             throw new TypeError(`cannot have another long flags '${_flags}'`);
           }
