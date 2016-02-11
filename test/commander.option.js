@@ -12,7 +12,7 @@ describe('commander.option', function () {
       name: 'foo',
       short: '-f',
       long: '--foo',
-      boolType: true,
+      param: null,
       desc: 'foo!!',
       action: null
     };
@@ -29,7 +29,7 @@ describe('commander.option', function () {
       name: 'fooBar',
       short: '-f',
       long: '--foo-bar',
-      boolType: false,
+      param: '<var>',
       desc: 'foo!! bar!!',
       action: null
     };
@@ -55,7 +55,7 @@ describe('commander.option', function () {
       name: 'foo',
       short: '-f',
       long: '--foo',
-      boolType: true,
+      param: null,
       desc: 'foo!!',
       action: null
     };
@@ -64,7 +64,7 @@ describe('commander.option', function () {
       name: 'bar',
       short: '-b',
       long: '--bar',
-      boolType: false,
+      param: '<var>',
       desc: 'bar!!',
       action: null
     };

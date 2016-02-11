@@ -75,7 +75,7 @@ module.exports = class Commander {
 
       /* * * Parameter * * */
       let param;
-      if (o.boolType) {
+      if (o.param === null) {
         param = true;
       } else {
 

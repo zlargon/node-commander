@@ -33,7 +33,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: '-f',
       long: '--foo',
-      boolType: true
+      param: null
     });
   });
 
@@ -45,7 +45,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: '-f',
       long: '--foo',
-      boolType: true
+      param: null
     });
   });
 
@@ -85,7 +85,7 @@ describe('flag.parse', function () {
       name: 'f',
       short: '-f',
       long: null,
-      boolType: true
+      param: null
     });
   });
 
@@ -97,7 +97,7 @@ describe('flag.parse', function () {
       name: '-',
       short: '--',
       long: null,
-      boolType: true
+      param: null
     });
   });
 
@@ -109,7 +109,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: null,
       long: '--foo',
-      boolType: true
+      param: null
     });
   });
 
@@ -128,7 +128,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: '-f',
       long: '--foo',
-      boolType: true
+      param: null
     });
   });
 
@@ -154,7 +154,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: '-f',
       long: '--foo',
-      boolType: false
+      param: '<bar>'
     });
   });
 
@@ -166,7 +166,7 @@ describe('flag.parse', function () {
       name: 'f',
       short: '-f',
       long: null,
-      boolType: false
+      param: '<bar>'
     });
   });
 
@@ -178,7 +178,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: null,
       long: '--foo',
-      boolType: false
+      param: '<bar>'
     });
   });
 
@@ -190,7 +190,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: null,
       long: '--foo',
-      boolType: false
+      param: '<b>'
     });
   });
 
@@ -223,7 +223,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: null,
       long: '--foo',
-      boolType: false
+      param: '<BAR>'
     });
   });
 
@@ -235,7 +235,7 @@ describe('flag.parse', function () {
       name: 'foo',
       short: null,
       long: '--foo',
-      boolType: false
+      param: '<BAR>'
     });
   });
 
@@ -254,7 +254,7 @@ describe('flag.parse', function () {
       name: 'fooBar',
       short: '-f',
       long: '--foo-bar',
-      boolType: false
+      param: '<var>'
     });
   });
 

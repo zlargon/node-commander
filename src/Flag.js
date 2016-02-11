@@ -24,6 +24,11 @@ module.exports = {
      */
 
     // 1. check parameters
+    let param = _flags.match(/\s*<\s*\w+\s*>\s*$/g);
+    if (param !== null && param.length === 1) {
+      param = param[0].replace(/\s/g, '');
+    }
+
     let flags = _flags.replace(/\s*<\s*\w+\s*>\s*$/g, '');
 
     // 2. parse options
@@ -31,7 +36,7 @@ module.exports = {
       name: null,
       short: null,
       long: null,
-      boolType: flags === _flags
+      param
     };
 
     // flag = ['-f', '--foo']
