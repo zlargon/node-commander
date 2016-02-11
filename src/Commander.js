@@ -4,7 +4,17 @@ const Flag = require('./Flag');
 
 module.exports = class Commander {
   constructor () {
-    this._option = {};
+    this._version = '';
+    this._option  = {};
+
+    this.option('--version', 'output the version number', function () {
+      console.log(this._version);
+    });
+  }
+
+  version (_version) {
+    this._version = _version;
+    return this;
   }
 
   option (flags, description, action) {

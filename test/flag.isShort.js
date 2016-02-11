@@ -10,7 +10,6 @@ describe('flag.isShort', function () {
     expect(output).to.be.false;
   });
 
-
   it('-f', function () {
     const input = this.test.title;
     const output = Flag.isShort(input);
