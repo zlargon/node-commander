@@ -4,12 +4,23 @@ const Flag = require('./Flag');
 
 module.exports = class Commander {
   constructor () {
+    this._usage   = '';
+    this._name    = path.basename(process.argv[1]);
     this._version = '';
     this._option  = {};
 
     this.option('--version', 'output the version number', function () {
       console.log(this._version);
     });
+  }
+
+  usage (_usage) {
+    this._usage = _usage;
+    return this;
+  }
+
+  help () {
+    return `\n  Usage: ${this._name} ${this._usage}\n`;
   }
 
   version (_version) {
@@ -46,7 +57,7 @@ module.exports = class Commander {
       throw new TypeError('argument should be at least two items');
     }
 
-    const name = path.basename(_args[1]);
+    this._name = path.basename(_args[1]);
     let args = [];
     let opt = {};
 
@@ -91,6 +102,10 @@ module.exports = class Commander {
       }
     }
 
-    return { name, args, opt };
+    return {
+      name: this._name,
+      args,
+      opt
+    };
   }
 };
